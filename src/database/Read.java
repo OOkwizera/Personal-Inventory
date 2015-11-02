@@ -14,14 +14,12 @@ public class Read {
 
 		boolean done = false;
 		while (!done) {
-			System.out.print("Enter command: ");
-			String cmd = DataInformation.getCommand();
+			String cmd = DataInformation.getRead();
 			if (cmd.equals("quit")) {
 				done = true;
 			} else {
-				System.out.print("Enter # of columns expected: ");
 				int columns = 4;
-				if (stat.execute(cmd)) {
+				if (stat.execute(cmd)){
 					ResultSet results = stat.getResultSet();
 					while (results.next()) {
 						for (int c = 1; c <= columns; ++c) {

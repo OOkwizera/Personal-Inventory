@@ -1,7 +1,8 @@
 package database;
 
 import java.sql.*;
-import java.util.Scanner;
+
+import application.DataInformation;
 
 // Most useful for creating/adding material to a database
 // Make sure sqlite-jdbc-3.8.11.2.jar is in the Java build path
@@ -12,16 +13,13 @@ public class Build {
         Statement stat = con.createStatement();
 
         boolean done = false;
-        Scanner input = new Scanner(System.in);
         while (!done) {
-            System.out.print("Enter command: ");
-            String cmd = input.nextLine();
+            String cmd = DataInformation.getCommand();
             if (cmd.equals("quit")) {
                 done = true;
             } else {
                 stat.execute(cmd);
             }
         }
-	input.close();
     }
 }
