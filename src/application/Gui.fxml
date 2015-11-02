@@ -6,82 +6,82 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <center>
       <TabPane prefHeight="440.0" prefWidth="395.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Physical Table">
+          <Tab fx:id="Physical" text="Physical ">
                <content>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane fx:id="physicalTable" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" wrappingWidth="52.65142059326172" />
-                        <DatePicker layoutX="103.0" layoutY="124.0" />
+                        <DatePicker fx:id="datePT" layoutX="103.0" layoutY="124.0" />
                         <Text layoutX="14.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise Time:" wrappingWidth="66.68292617797852" />
                         <Text layoutX="14.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of meals:" wrappingWidth="66.68292617797852" />
                         <Text layoutX="14.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Sleep:" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="105.0" layoutY="191.0" prefHeight="26.0" prefWidth="193.0" />
-                        <TextField layoutX="103.0" layoutY="258.0" prefHeight="26.0" prefWidth="196.0" promptText="Time spent working out" />
-                        <TextField layoutX="101.0" layoutY="334.0" prefHeight="26.0" prefWidth="200.0" promptText="amount of sleep from last night" />
-                        <Button layoutX="315.0" layoutY="367.0" mnemonicParsing="false" text="Save" />
-                        <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Physical Data" />
+                        <TextField fx:id="meals" layoutX="105.0" layoutY="191.0" prefHeight="26.0" prefWidth="193.0" />
+                        <TextField fx:id="exercise" layoutX="103.0" layoutY="258.0" prefHeight="26.0" prefWidth="196.0" promptText="Time spent working out" />
+                        <TextField fx:id="sleep" layoutX="101.0" layoutY="334.0" prefHeight="26.0" prefWidth="200.0" promptText="amount of sleep from last night" />
+                        <Button fx:id="savePhysical" layoutX="315.0" layoutY="367.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="analyzePhysical" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Physical Data" />
                         <Text layoutX="12.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
                   </Pane>
                </content>
           </Tab>
-          <Tab text="Social Table">
+          <Tab fx:id="Social" text="Social ">
                <content>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane fx:id="socialTable" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="22.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" wrappingWidth="52.65142059326172" />
-                        <DatePicker layoutX="105.0" layoutY="132.0" prefHeight="26.0" prefWidth="197.0" />
+                        <DatePicker fx:id="dateST" layoutX="105.0" layoutY="132.0" prefHeight="26.0" prefWidth="197.0" />
                         <Text layoutX="22.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat :" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="103.0" layoutY="209.0" prefHeight="26.0" prefWidth="200.0" promptText="Amount of time spent chatting" />
+                        <TextField fx:id="chat" layoutX="103.0" layoutY="209.0" prefHeight="26.0" prefWidth="200.0" promptText="Amount of time spent chatting" />
                         <Text layoutX="22.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Social Media :" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="103.0" layoutY="277.0" prefHeight="26.0" prefWidth="205.0" promptText="Amount of time spent using SM" />
+                        <TextField fx:id="socialMedia" layoutX="103.0" layoutY="277.0" prefHeight="26.0" prefWidth="205.0" promptText="Amount of time spent using SM" />
                         <Text layoutX="22.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fun :" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="98.0" layoutY="334.0" prefHeight="26.0" prefWidth="210.0" promptText="Number of fun activities" />
-                        <Button layoutX="315.0" layoutY="361.0" mnemonicParsing="false" text="Save" />
-                        <Button layoutX="20.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Social Data" />
+                        <TextField fx:id="fun" layoutX="98.0" layoutY="334.0" prefHeight="26.0" prefWidth="210.0" promptText="Number of fun activities" />
+                        <Button fx:id="saveSocial" layoutX="315.0" layoutY="361.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="analyzeSocial" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Social Data" />
                         <Text layoutX="20.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
                   </Pane>
                </content>
           </Tab>
-            <Tab text="Mental Table">
+            <Tab fx:id="Mental" text="Mental ">
                <content>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane fx:id="mentalTable" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="21.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" wrappingWidth="52.65142059326172" />
-                        <DatePicker layoutX="99.0" layoutY="102.0" prefHeight="26.0" prefWidth="197.0" />
+                        <DatePicker fx:id="dateMT" layoutX="99.0" layoutY="102.0" prefHeight="26.0" prefWidth="197.0" />
                         <Text layoutX="20.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Tasks :" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="99.0" layoutY="170.0" prefHeight="26.0" prefWidth="200.0" promptText="Number of completed tasks " />
+                        <TextField fx:id="tasks" layoutX="99.0" layoutY="170.0" prefHeight="26.0" prefWidth="200.0" promptText="Number of completed tasks " />
                         <Text layoutX="20.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Projects :" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="99.0" layoutY="236.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent on personal stuff" />
+                        <TextField fx:id="personalProjects" layoutX="99.0" layoutY="236.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent on personal stuff" />
                         <Text layoutX="20.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help :" wrappingWidth="66.68292617797852" />
-                        <TextField layoutX="98.0" layoutY="304.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent helping others" />
-                        <Button layoutX="321.0" layoutY="355.0" mnemonicParsing="false" text="Save" />
-                        <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Mental Data" />
+                        <TextField fx:id="helpTime" layoutX="98.0" layoutY="304.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent helping others" />
+                        <Button fx:id="saveMental" layoutX="321.0" layoutY="355.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="analyzeMental" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Mental Data" />
                         <Text layoutX="20.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
                   </Pane>
                </content>
             </Tab>
-            <Tab text="Evaluation T">
+            <Tab fx:id="Evaluation" text="Evaluation ">
                <content>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane fx:id="evaluationTable" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="58.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate your overall experience for today here!" wrappingWidth="257.37091064453125" />
                         <Text layoutX="64.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Out of 10 rate each of the following category:" />
                         <Text layoutX="32.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.65142059326172" />
-                        <DatePicker layoutX="138.0" layoutY="69.0" prefHeight="26.0" prefWidth="197.0" />
-                        <ChoiceBox layoutX="138.0" layoutY="178.0" prefHeight="26.0" prefWidth="198.0" />
+                        <DatePicker fx:id="dateET" layoutX="138.0" layoutY="69.0" prefHeight="26.0" prefWidth="197.0" />
+                        <ChoiceBox fx:id="productivityRate" layoutX="138.0" layoutY="178.0" prefHeight="26.0" prefWidth="198.0" />
                         <Label layoutX="32.0" layoutY="183.0" text="Productivity :" />
                         <Label layoutX="32.0" layoutY="249.0" prefHeight="16.0" prefWidth="78.0" text="Happiness :" />
-                        <ChoiceBox layoutX="136.0" layoutY="244.0" prefHeight="26.0" prefWidth="202.0" />
+                        <ChoiceBox fx:id="happinessRate" layoutX="136.0" layoutY="244.0" prefHeight="26.0" prefWidth="202.0" />
                         <Label layoutX="32.0" layoutY="313.0" prefHeight="16.0" prefWidth="90.0" text="Stress Level : " />
-                        <ChoiceBox layoutX="136.0" layoutY="308.0" prefHeight="26.0" prefWidth="202.0" />
-                        <Button layoutX="331.0" layoutY="361.0" mnemonicParsing="false" text="Save" />
+                        <ChoiceBox fx:id="stressRate" layoutX="136.0" layoutY="308.0" prefHeight="26.0" prefWidth="202.0" />
+                        <Button fx:id="saveEval" layoutX="331.0" layoutY="361.0" mnemonicParsing="false" text="Save" />
                         <Label layoutX="32.0" layoutY="74.0" text="Date :" />
                      </children>
                   </Pane>
