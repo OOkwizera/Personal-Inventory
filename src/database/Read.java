@@ -1,7 +1,8 @@
 package database;
 
 import java.sql.*;
-import java.util.Scanner;
+
+import application.DataInformation;
 
 // Most useful for reading material from a database
 // Make sure that sqlite-jdbc.3.8.11.2.jar is in the Java Build Path
@@ -12,16 +13,14 @@ public class Read {
 		Statement stat = con.createStatement();
 
 		boolean done = false;
-		Scanner input = new Scanner(System.in);
 		while (!done) {
 			System.out.print("Enter command: ");
-			String cmd = input.nextLine();
+			String cmd = DataInformation.getCommand();
 			if (cmd.equals("quit")) {
 				done = true;
 			} else {
 				System.out.print("Enter # of columns expected: ");
-				int columns = input.nextInt();
-				input.nextLine();
+				int columns = 4;
 				if (stat.execute(cmd)) {
 					ResultSet results = stat.getResultSet();
 					while (results.next()) {
@@ -33,7 +32,6 @@ public class Read {
 				}
 			}
 		}
-		input.close();
 	}
 }
 
