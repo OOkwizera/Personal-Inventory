@@ -1,5 +1,17 @@
 package application;
 
 public class DataInformation {
-  //class to do stuff with the data base. Entering info, getting info, etc.
+  
+	public void createTable(String table){
+		//CREATE TABLE table
+	}
+	
+	public void add(String s){
+		
+	}
+
+	public static String getCommand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
