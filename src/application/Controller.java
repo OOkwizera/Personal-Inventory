@@ -110,9 +110,9 @@ public class Controller {
 	@FXML 
 	void savetoPTable() throws SQLException {
 		String date = datePT.getValue().toString();
-		int numMeals = Integer.valueOf(meals.getText());
-		int exercTime = Integer.valueOf(exercise.getText());
-		int sleepTime = Integer.valueOf(sleep.getText());
+		int numMeals = Integer.parseInt(meals.getText());
+		int exercTime = Integer.parseInt(exercise.getText());
+		int sleepTime = Integer.parseInt(sleep.getText());
 		String cmd = getCommand(date, numMeals, exercTime, sleepTime);
 		data.updateTable("INSERT INTO Physical VALUES" + cmd);
 		setDates();
@@ -123,9 +123,9 @@ public class Controller {
 	@FXML 
 	void savetoSTable() throws SQLException {
 		String date = datePT.getValue().toString();
-		int chatTime = Integer.valueOf(chat.getText());
-		int socialMediaTime = Integer.valueOf(socialMedia.getText());
-		int funTime = Integer.valueOf(fun.getText());
+		int chatTime = Integer.parseInt(chat.getText());
+		int socialMediaTime = Integer.parseInt(socialMedia.getText());
+		int funTime = Integer.parseInt(fun.getText());
 		String cmd = getCommand(date, chatTime, socialMediaTime, funTime);
 		data.updateTable("INSERT INTO Social VALUES" + cmd);
 		clearTexts(chat, socialMedia, fun);
@@ -135,9 +135,9 @@ public class Controller {
 	@FXML
 	void savetoMTable() throws SQLException{
 		String date = datePT.getValue().toString();
-		int numTasks = Integer.valueOf(tasks.getText());
-		int personalTime = Integer.valueOf(personalProjects.getText());
-		int help = Integer.valueOf(helpTime.getText());
+		int numTasks = Integer.parseInt(tasks.getText());
+		int personalTime = Integer.parseInt(personalProjects.getText());
+		int help = Integer.parseInt(helpTime.getText());
 		String cmd = getCommand(date, numTasks, personalTime, help);
 		data.updateTable("INSERT INTO Mental VALUES" + cmd);
 		getNextTab();
@@ -157,7 +157,7 @@ public class Controller {
 	}
 	
 	public String getCommand(String column1, int column2, int column3, int column4) {
-		String cmd = " ( " + column1+ ", " + column2 + ", " + column3 + ", " + column4 + " )";
+		String cmd = " ( " + column1 + ", " + column2 + ", " + column3 + ", " + column4 + " )";
 		return cmd;
 	}
 	
