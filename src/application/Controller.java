@@ -1,8 +1,11 @@
 package application;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import application.database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,11 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 public class Controller {
+	
+	private Database data = new Database();
   
+	@FXML
+	TabPane tabs;
 	@FXML
 	Tab Physical; 
 	@FXML
@@ -83,13 +91,99 @@ public class Controller {
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
 	
 	@FXML
-	void initialize() {
+	void initialize()  {
 		ratings.addAll(ints);
 		productivityRate.setItems(ratings);
 		happinessRate.setItems(ratings);
 		stressRate.setItems(ratings);
+		
+		try {
+			data.initiateDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	
 	}	
+	
+	@FXML 
+	void savetoPTable() throws SQLException {
+		String date = datePT.getValue().toString();
+		int numMeals = Integer.valueOf(meals.getText());
+		int exercTime = Integer.valueOf(exercise.getText());
+		int sleepTime = Integer.valueOf(sleep.getText());
+		String cmd = getCommand(date, numMeals, exercTime, sleepTime);
+		data.updateTable("INSERT INTO Physical VALUES" + cmd);
+		setDates();
+		getNextTab();
+		clearTexts(meals, exercise, sleep);
+	}
+	
+	@FXML 
+	void savetoSTable() throws SQLException {
+		String date = datePT.getValue().toString();
+		int chatTime = Integer.valueOf(chat.getText());
+		int socialMediaTime = Integer.valueOf(socialMedia.getText());
+		int funTime = Integer.valueOf(fun.getText());
+		String cmd = getCommand(date, chatTime, socialMediaTime, funTime);
+		data.updateTable("INSERT INTO Social VALUES" + cmd);
+		clearTexts(chat, socialMedia, fun);
+		getNextTab();
+	}
+	
+	@FXML
+	void savetoMTable() throws SQLException{
+		String date = datePT.getValue().toString();
+		int numTasks = Integer.valueOf(tasks.getText());
+		int personalTime = Integer.valueOf(personalProjects.getText());
+		int help = Integer.valueOf(helpTime.getText());
+		String cmd = getCommand(date, numTasks, personalTime, help);
+		data.updateTable("INSERT INTO Mental VALUES" + cmd);
+		getNextTab();
+		clearTexts(tasks, personalProjects, helpTime);
+		
+	}
+	
+	@FXML 
+	void savetoEvalTable() throws SQLException{
+		String date = datePT.getValue().toString();
+		int pScore = productivityRate.getValue();
+		int hScore = happinessRate.getValue();
+		int sScore = stressRate.getValue();
+		String cmd = getCommand(date, pScore, hScore, sScore);
+		data.updateTable("INSERT INTO Evaluation VALUES" + cmd);
+		
+	}
+	
+	public String getCommand(String column1, int column2, int column3, int column4) {
+		String cmd = " ( " + column1+ ", " + column2 + ", " + column3 + ", " + column4 + " )";
+		return cmd;
+	}
+	
+	@FXML
+	public void setDates() {
+		LocalDate d =datePT.getValue();
+		if (!d.toString().equals("")) {
+			dateST.setValue(d);
+			dateMT.setValue(d);
+			dateET.setValue(d);
+		}
+	}
+	
+	
+	void clearTexts(TextField t1, TextField t2, TextField t3) {
+		t1.clear();
+		t2.clear();
+		t3.clear();
+	}
+	
+	@FXML
+	void getNextTab() {
+		tabs.getSelectionModel().selectNext();
+	}
+	
+	
 	
 	
 	

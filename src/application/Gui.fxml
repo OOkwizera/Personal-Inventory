@@ -8,7 +8,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <center>
-      <TabPane prefHeight="440.0" prefWidth="395.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabs" prefHeight="440.0" prefWidth="395.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab fx:id="Physical" text="Physical ">
                <content>
@@ -22,7 +22,7 @@
                         <TextField fx:id="meals" layoutX="105.0" layoutY="191.0" prefHeight="26.0" prefWidth="193.0" />
                         <TextField fx:id="exercise" layoutX="103.0" layoutY="258.0" prefHeight="26.0" prefWidth="196.0" promptText="Time spent working out" />
                         <TextField fx:id="sleep" layoutX="101.0" layoutY="334.0" prefHeight="26.0" prefWidth="200.0" promptText="amount of sleep from last night" />
-                        <Button fx:id="savePhysical" layoutX="315.0" layoutY="367.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="savePhysical" layoutX="315.0" layoutY="367.0" mnemonicParsing="false" onAction="#savetoPTable" text="Save" />
                         <Button fx:id="analyzePhysical" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Physical Data" />
                         <Text layoutX="12.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
@@ -41,7 +41,7 @@
                         <TextField fx:id="socialMedia" layoutX="103.0" layoutY="277.0" prefHeight="26.0" prefWidth="205.0" promptText="Amount of time spent using SM" />
                         <Text layoutX="22.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fun :" wrappingWidth="66.68292617797852" />
                         <TextField fx:id="fun" layoutX="98.0" layoutY="334.0" prefHeight="26.0" prefWidth="210.0" promptText="Number of fun activities" />
-                        <Button fx:id="saveSocial" layoutX="315.0" layoutY="361.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="saveSocial" layoutX="315.0" layoutY="361.0" mnemonicParsing="false" onAction="#savetoSTable" text="Save" />
                         <Button fx:id="analyzeSocial" layoutX="20.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Social Data" />
                         <Text layoutX="20.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
@@ -60,7 +60,7 @@
                         <TextField fx:id="personalProjects" layoutX="99.0" layoutY="236.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent on personal stuff" />
                         <Text layoutX="20.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help :" wrappingWidth="66.68292617797852" />
                         <TextField fx:id="helpTime" layoutX="98.0" layoutY="304.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent helping others" />
-                        <Button fx:id="saveMental" layoutX="321.0" layoutY="355.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="saveMental" layoutX="321.0" layoutY="355.0" mnemonicParsing="false" onAction="#savetoMTable" text="Save" />
                         <Button fx:id="analyzeMental" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Mental Data" />
                         <Text layoutX="20.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
@@ -81,7 +81,7 @@
                         <ChoiceBox fx:id="happinessRate" layoutX="136.0" layoutY="244.0" prefHeight="26.0" prefWidth="202.0" />
                         <Label layoutX="32.0" layoutY="313.0" prefHeight="16.0" prefWidth="90.0" text="Stress Level : " />
                         <ChoiceBox fx:id="stressRate" layoutX="136.0" layoutY="308.0" prefHeight="26.0" prefWidth="202.0" />
-                        <Button fx:id="saveEval" layoutX="331.0" layoutY="361.0" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="saveEval" layoutX="331.0" layoutY="361.0" mnemonicParsing="false" onAction="#savetoEvalTable" text="Save" />
                         <Label layoutX="32.0" layoutY="74.0" text="Date :" />
                      </children>
                   </Pane>
