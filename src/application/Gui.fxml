@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -83,6 +84,22 @@
                         <ChoiceBox fx:id="stressRate" layoutX="136.0" layoutY="308.0" prefHeight="26.0" prefWidth="202.0" />
                         <Button fx:id="saveEval" layoutX="331.0" layoutY="361.0" mnemonicParsing="false" onAction="#savetoEvalTable" text="Save" />
                         <Label layoutX="32.0" layoutY="74.0" text="Date :" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+            <Tab text="Analyze Data">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <LineChart layoutX="16.0" layoutY="10.0" prefHeight="382.0" prefWidth="363.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
                      </children>
                   </Pane>
                </content>
