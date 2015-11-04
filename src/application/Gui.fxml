@@ -20,9 +20,9 @@
                         <Text layoutX="14.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise Time:" wrappingWidth="66.68292617797852" />
                         <Text layoutX="14.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of meals:" wrappingWidth="66.68292617797852" />
                         <Text layoutX="14.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Sleep:" wrappingWidth="66.68292617797852" />
-                        <TextField fx:id="meals" layoutX="101.0" layoutY="161.0" prefHeight="26.0" prefWidth="193.0" />
+                        <TextField fx:id="meals" layoutX="101.0" layoutY="161.0" prefHeight="26.0" prefWidth="193.0" promptText="Number of meals for the day" />
                         <TextField fx:id="exercise" layoutX="100.0" layoutY="241.0" prefHeight="26.0" prefWidth="196.0" promptText="Time spent working out" />
-                        <TextField fx:id="sleep" layoutX="98.0" layoutY="322.0" prefHeight="26.0" prefWidth="200.0" promptText="amount of sleep from last night" />
+                        <TextField fx:id="sleep" layoutX="98.0" layoutY="322.0" prefHeight="26.0" prefWidth="200.0" promptText="Amount of sleep from last night" />
                         <Button fx:id="savePhysical" layoutX="315.0" layoutY="367.0" mnemonicParsing="false" onAction="#savetoPTable" text="Next" />
                         <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
@@ -97,10 +97,11 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </LineChart>
-                        <ChoiceBox disable="true" layoutX="14.0" layoutY="23.0" prefWidth="150.0" />
-                        <ChoiceBox disable="true" layoutX="229.0" layoutY="23.0" prefWidth="150.0" />
-                        <Label layoutX="61.0" layoutY="6.0" text="x-Axis:" />
-                        <Label layoutX="276.0" layoutY="6.0" text="y-Axis:" />
+                        <ChoiceBox layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" fx:id="xAxis" />
+                        <ChoiceBox fx:id="yAxis" layoutX="165.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" />
+                        <Label layoutX="59.0" layoutY="6.0" text="x-Axis:" />
+                        <Label layoutX="210.0" layoutY="6.0" text="y-Axis:" />
+                        <Button layoutX="314.0" layoutY="23.0" mnemonicParsing="false" text="Graph" />
                      </children>
                   </Pane>
                </content>
