@@ -24,7 +24,7 @@
                         <TextField fx:id="exercise" layoutX="103.0" layoutY="258.0" prefHeight="26.0" prefWidth="196.0" promptText="Time spent working out" />
                         <TextField fx:id="sleep" layoutX="101.0" layoutY="334.0" prefHeight="26.0" prefWidth="200.0" promptText="amount of sleep from last night" />
                         <Button fx:id="savePhysical" layoutX="315.0" layoutY="367.0" mnemonicParsing="false" onAction="#savetoPTable" text="Save" />
-                        <Button fx:id="analyzePhysical" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Analyze Physical Data" />
+                        <Button fx:id="analyzePhysical" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#physicalPopUp" prefHeight="26.0" prefWidth="156.0" text="Analyze Physical Data" />
                         <Text layoutX="12.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                      </children>
                   </Pane>
@@ -92,7 +92,7 @@
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <LineChart layoutX="16.0" layoutY="10.0" prefHeight="382.0" prefWidth="363.0">
+                        <LineChart layoutX="10.0" layoutY="55.0" prefHeight="337.0" prefWidth="369.0">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -100,6 +100,10 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </LineChart>
+                        <ChoiceBox disable="true" layoutX="14.0" layoutY="23.0" prefWidth="150.0" />
+                        <ChoiceBox disable="true" layoutX="229.0" layoutY="23.0" prefWidth="150.0" />
+                        <Label layoutX="61.0" layoutY="6.0" text="x-Axis:" />
+                        <Label layoutX="276.0" layoutY="6.0" text="y-Axis:" />
                      </children>
                   </Pane>
                </content>

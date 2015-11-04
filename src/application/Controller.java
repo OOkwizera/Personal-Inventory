@@ -9,6 +9,8 @@ import application.database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -16,6 +18,9 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class Controller {
 	
@@ -86,6 +91,10 @@ public class Controller {
 	ChoiceBox<Integer> stressRate = new ChoiceBox<Integer>();
 	@FXML
 	Button saveEval;
+	@FXML
+	TextField xAxis;
+	@FXML
+	TextField yAxis;
 	
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
@@ -183,7 +192,21 @@ public class Controller {
 		tabs.getSelectionModel().selectNext();
 	}
 	
-	
+	@FXML
+    public void physicalPopUp(){
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Choose Axes");
+        window.setMinWidth(250);
+        
+        VBox layout = new VBox(2);
+        layout.getChildren().addAll(xAxis, yAxis);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout);
+        window.setScene(scene);
+        window.showAndWait();
+    }
 	
 	
 	
