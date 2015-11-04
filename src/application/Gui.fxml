@@ -89,9 +89,9 @@
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <LineChart layoutX="10.0" layoutY="55.0" prefHeight="337.0" prefWidth="369.0">
+                        <LineChart fx:id="graph" layoutX="10.0" layoutY="55.0" prefHeight="337.0" prefWidth="369.0">
                           <xAxis>
-                            <CategoryAxis side="BOTTOM" />
+                            <NumberAxis side="BOTTOM" />
                           </xAxis>
                           <yAxis>
                             <NumberAxis side="LEFT" />
@@ -101,7 +101,7 @@
                         <ChoiceBox fx:id="yAxis" layoutX="165.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" />
                         <Label layoutX="59.0" layoutY="6.0" text="x-Axis:" />
                         <Label layoutX="210.0" layoutY="6.0" text="y-Axis:" />
-                        <Button layoutX="314.0" layoutY="23.0" mnemonicParsing="false" text="Graph" />
+                        <Button fx:id="analyze" layoutX="314.0" layoutY="23.0" mnemonicParsing="false" onAction="#analyze" text="Graph" />
                      </children>
                   </Pane>
                </content>

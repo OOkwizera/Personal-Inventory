@@ -18,9 +18,10 @@ public class Database {
 	        this.statement.execute(command1);
 	        String command2 = "CREATE TABLE IF NOT EXISTS Social (Date TEXT, Chat INTEGER, SocialMedia INTEGER,  Fun INTEGER)";
 	        this.statement.execute(command2);
-	        String command3 = "CREATE TABLE IF NOT EXISTS Mental (Date TEXT, tasksCompleted INTEGER, personalProjects INTEGER,  helpTime INTEGER)";
+	        String command3 = "CREATE TABLE IF NOT EXISTS Mental (Date TEXT, tasksCompleted INTEGER, personalProjects INTEGER, "
+	        		+ " helpTime INTEGER)";
 	        this.statement.execute(command3);
-	        String command4 = "CREATE TABLE IF NOT EXISTS Evaluation (Date TEXT, Productivity INTEGER, Happiness INTEGER,  Stress INTEGER)";
+	        String command4 = "CREATE TABLE IF NOT EXISTS Evaluation (Date TEXT, Productivity INTEGER, Happiness INTEGER, Stress INTEGER)";
 	        this.statement.execute(command4);
     	} catch (SQLException e) {
     		System.err.println(e.getMessage());
@@ -74,6 +75,7 @@ public class Database {
 		   System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		   System.exit(0);
 	   }
+	   System.out.println(dataList.size());
 	   return dataList;
    }
      

@@ -89,14 +89,17 @@ public class Controller {
 	ChoiceBox<String> yAxis;
 	@FXML
 	LineChart<Number, Number> graph;
+	@FXML
+	Button analyze;
+	
 	
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
 	
-	ArrayList<String> Xaxis = new ArrayList<String>(Arrays.asList("Meals", "Exercise", 
+	final ArrayList<String> Xaxis = new ArrayList<String>(Arrays.asList("Meals", "Exercise", 
 			"Sleep", "Chat", "SocialMedia", "Fun", "tasksCompleted", 
 			"personalProjects", "helpTime"));
-	ArrayList<String> Yaxis = new ArrayList<String>(Arrays.asList("Productivity", 
+	final ArrayList<String> Yaxis = new ArrayList<String>(Arrays.asList("Productivity", 
 			"Happiness", "Stress"));
 	ObservableList<String> xcategories = FXCollections.observableArrayList();
 	ObservableList<String> ycategories = FXCollections.observableArrayList();
@@ -206,10 +209,11 @@ public class Controller {
 		if (validAxes()) {
 			String columnX = xAxis.getValue();
 			String columnY = yAxis.getValue();
+			series.setName(columnX + " vs " + columnY);
 			ArrayList<Integer> xData = data.getData(getTable(columnX), columnX);
 			ArrayList<Integer> yData = data.getData(getTable(columnY), columnY);
-			for (int i = 0; i< Math.min(xData.size(), yData.size()); i++) {
-				series.getData().add(new Data<Number, Number>(xData.get(i), yData.get(i)));
+			for (int i = 0; i< Math.min(10, Math.min(xData.size(), yData.size())); i++) {
+				series.getData().add(new Data<Number, Number> (xData.get(i), yData.get(i)));
 					
 			}	
 			
@@ -218,7 +222,7 @@ public class Controller {
 	}
 	
 	public boolean validAxes() {
-		return (!xAxis.getValue().equals("") && !yAxis.getValue().equals(""));
+		return (xAxis.getValue() != null && yAxis.getValue() != null);
 	}
 	
 	public String getTable(String column) {
@@ -245,6 +249,7 @@ public class Controller {
 		graph.getXAxis().setLabel(xAxis.getValue());
 		graph.getYAxis().setLabel(yAxis.getValue());
 		graph.getData().add(getSeries());
+		
 		
 	}
 	
