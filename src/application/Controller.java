@@ -81,9 +81,9 @@ public class Controller {
 	@FXML
 	Button saveEval;
 	@FXML
-	TextField xAxis;
+	ChoiceBox<String> xAxis;
 	@FXML
-	TextField yAxis;
+	ChoiceBox<String> yAxis;
 	
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
