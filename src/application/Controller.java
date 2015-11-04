@@ -88,12 +88,26 @@ public class Controller {
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
 	
+	ArrayList<String> Xaxis = new ArrayList<String>(Arrays.asList("Meals", "Exercise", 
+			"Sleep", "Chat", "SocialMedia", "Fun", "tasksCompleted", 
+			"personalProjects", "helpTime"));
+	ArrayList<String> Yaxis = new ArrayList<String>(Arrays.asList("Productivity", 
+			"Happiness", "Stress"));
+	ObservableList<String> xcategories = FXCollections.observableArrayList();
+	ObservableList<String> ycategories = FXCollections.observableArrayList();
+	
 	@FXML
 	void initialize()  {
 		ratings.addAll(ints);
 		productivityRate.setItems(ratings);
 		happinessRate.setItems(ratings);
 		stressRate.setItems(ratings);
+		
+		xcategories.addAll(Xaxis);
+		xAxis.setItems(xcategories);
+		
+		ycategories.addAll(Yaxis);
+		yAxis.setItems(ycategories);
 		
 		try {
 			data.initiateDB();
@@ -180,4 +194,5 @@ public class Controller {
 	void getNextTab() {
 		tabs.getSelectionModel().selectNext();
 	}
-}
+	
+}	
