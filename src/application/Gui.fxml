@@ -97,10 +97,11 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </LineChart>
-                        <ChoiceBox disable="true" layoutX="14.0" layoutY="23.0" prefWidth="150.0" fx:id="xAxis" />
-                        <ChoiceBox fx:id="yAxis" disable="true" layoutX="229.0" layoutY="23.0" prefWidth="150.0" />
-                        <Label layoutX="61.0" layoutY="6.0" text="x-Axis:" />
-                        <Label layoutX="276.0" layoutY="6.0" text="y-Axis:" />
+                        <ChoiceBox layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" fx:id="xAxis" />
+                        <ChoiceBox fx:id="yAxis" layoutX="165.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" />
+                        <Label layoutX="59.0" layoutY="6.0" text="x-Axis:" />
+                        <Label layoutX="210.0" layoutY="6.0" text="y-Axis:" />
+                        <Button layoutX="314.0" layoutY="23.0" mnemonicParsing="false" text="Graph" />
                      </children>
                   </Pane>
                </content>
