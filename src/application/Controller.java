@@ -9,8 +9,6 @@ import application.database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -18,9 +16,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class Controller {
 	
@@ -54,8 +49,6 @@ public class Controller {
 	@FXML
 	TextField sleep;
 	@FXML
-	Button analyzePhysical;
-	@FXML
 	Button savePhysical;
 	@FXML
 	DatePicker dateST;
@@ -66,8 +59,6 @@ public class Controller {
 	@FXML
 	TextField fun;
 	@FXML
-	Button analyzeSocial;
-	@FXML
 	Button saveSocial;
 	@FXML
 	DatePicker dateMT;
@@ -77,8 +68,6 @@ public class Controller {
 	TextField personalProjects;
 	@FXML
 	TextField helpTime;
-	@FXML
-	Button analyzeMental;
 	@FXML
 	Button saveMental;
 	@FXML
@@ -191,23 +180,4 @@ public class Controller {
 	void getNextTab() {
 		tabs.getSelectionModel().selectNext();
 	}
-	
-	@FXML
-    public void physicalPopUp(){
-        Stage window = new Stage();
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Choose Axes");
-        window.setMinWidth(250);
-        
-        VBox layout = new VBox(2);
-        layout.getChildren().addAll(xAxis, yAxis);
-        layout.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();
-    }
-	
-	
-	
 }
