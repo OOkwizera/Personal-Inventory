@@ -9,6 +9,9 @@ import application.database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -84,6 +87,8 @@ public class Controller {
 	ChoiceBox<String> xAxis;
 	@FXML
 	ChoiceBox<String> yAxis;
+	@FXML
+	LineChart<Number, Number> graph;
 	
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
@@ -193,6 +198,54 @@ public class Controller {
 	@FXML
 	void getNextTab() {
 		tabs.getSelectionModel().selectNext();
+	}
+	
+	@FXML
+	public XYChart.Series<Number, Number> getSeries() {
+		XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
+		if (validAxes()) {
+			String columnX = xAxis.getValue();
+			String columnY = yAxis.getValue();
+			ArrayList<Integer> xData = data.getData(getTable(columnX), columnX);
+			ArrayList<Integer> yData = data.getData(getTable(columnY), columnY);
+			for (int i = 0; i< Math.min(xData.size(), yData.size()); i++) {
+				series.getData().add(new Data<Number, Number>(xData.get(i), yData.get(i)));
+					
+			}	
+			
+		} return series;
+		
+	}
+	
+	public boolean validAxes() {
+		return (!xAxis.getValue().equals("") && !yAxis.getValue().equals(""));
+	}
+	
+	public String getTable(String column) {
+		String tableName = "";
+		if (column.equals("Meals") || column.equals("Exercise") || column.equals("Sleep")) {
+			tableName += "Physical";
+			return tableName;
+		} else if ((column.equals("Chat") || column.equals("SocialMedia") || column.equals("Fun"))) {
+			tableName += "Social";
+			return tableName;
+		} else if ((column.equals("tasksCompleted") || column.equals("personalProjects") || column.equals("helpTime"))) {
+			tableName += "Mental";
+			return tableName;
+		} else {
+			tableName += "Evaluation";
+			return tableName;
+		}
+		
+	} 
+	
+	@FXML
+	void analyze() {
+		graph.getData().clear();
+		graph.getXAxis().setLabel(xAxis.getValue());
+		graph.getYAxis().setLabel(yAxis.getValue());
+		graph.getData().add(getSeries());
+		
 	}
 	
 }	
