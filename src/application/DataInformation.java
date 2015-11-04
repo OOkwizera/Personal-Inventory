@@ -1,16 +1,12 @@
 package application;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TextField;
-
 public class DataInformation {
   
 	/*void savetoPTable() throws SQLException {
 		String date = datePT.getValue().toString();
-		int numMeals = Integer.parseInt(meals.getText());
-		int exercTime = Integer.parseInt(exercise.getText());
-		int sleepTime = Integer.parseInt(sleep.getText());
+		int numMeals = getPTinfo(meals.getText());
+		int exercTime = getPTinfo(exercise.getText());
+		int sleepTime = getPTinfo(sleep.getText());
 		String cmd = getCommand(date, numMeals, exercTime, sleepTime);
 		data.updateTable("INSERT INTO Physical VALUES" + cmd);
 		setDates();
@@ -19,18 +15,18 @@ public class DataInformation {
 	}*/
 
 	/*
-	 * public void getPTinfo(TextField field){
-	 * 		String info = field.getText();
+	 * public void getPTinfo(String info){
 	 * 		if(info == "") {
-	 * 			badNews(field.getPromptText());
+	 * 			badNews();
 	 * 		}else{
 	 * 			return Integer.parseInt(info);
 	 * */
 	
 	/*
-	 * void badNews(String s) {
+	 * void badNews() {
 		Alert badNum = new Alert(AlertType.ERROR);
-		badNum.setContentText("A value must be entered into the " + s + " textbox.");
+		badNum.setContentText("A value must be entered into " +
+			"all the text boxes before the information can save.");
 		badNum.show();
 	}
 	 * 
