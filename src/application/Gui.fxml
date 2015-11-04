@@ -97,8 +97,8 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </LineChart>
-                        <ChoiceBox disable="true" layoutX="14.0" layoutY="23.0" prefWidth="150.0" />
-                        <ChoiceBox disable="true" layoutX="229.0" layoutY="23.0" prefWidth="150.0" />
+                        <ChoiceBox disable="true" layoutX="14.0" layoutY="23.0" prefWidth="150.0" fx:id="xAxis" />
+                        <ChoiceBox fx:id="yAxis" disable="true" layoutX="229.0" layoutY="23.0" prefWidth="150.0" />
                         <Label layoutX="61.0" layoutY="6.0" text="x-Axis:" />
                         <Label layoutX="276.0" layoutY="6.0" text="y-Axis:" />
                      </children>
