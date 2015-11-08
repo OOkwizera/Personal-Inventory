@@ -25,6 +25,8 @@
                         <TextField fx:id="sleep" layoutX="98.0" layoutY="322.0" prefHeight="26.0" prefWidth="200.0" promptText="Amount of sleep from last night" />
                         <Button fx:id="savePhysical" layoutX="315.0" layoutY="367.0" mnemonicParsing="false" onAction="#savetoPTable" text="Next" />
                         <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
+                        <Label layoutX="311.0" layoutY="246.0" text="min." />
+                        <Label layoutX="311.0" layoutY="326.0" text="min." />
                      </children>
                   </Pane>
                </content>
@@ -43,6 +45,8 @@
                         <TextField fx:id="fun" layoutX="98.0" layoutY="314.0" prefHeight="26.0" prefWidth="210.0" promptText="Number of fun activities" />
                         <Button fx:id="saveSocial" layoutX="315.0" layoutY="361.0" mnemonicParsing="false" onAction="#savetoSTable" text="Next" />
                         <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
+                        <Label layoutX="324.0" layoutY="157.0" text="min." />
+                        <Label layoutX="324.0" layoutY="246.0" text="min." />
                      </children>
                   </Pane>
                </content>
@@ -61,6 +65,8 @@
                         <TextField fx:id="helpTime" layoutX="98.0" layoutY="314.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent helping others" />
                         <Button fx:id="saveMental" layoutX="321.0" layoutY="355.0" mnemonicParsing="false" onAction="#savetoMTable" text="Next" />
                         <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
+                        <Label layoutX="321.0" layoutY="245.0" text="min." />
+                        <Label layoutX="321.0" layoutY="318.0" text="min." />
                      </children>
                   </Pane>
                </content>
