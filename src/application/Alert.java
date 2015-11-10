@@ -1,6 +1,6 @@
 package application;
 
-public class DataInformation {
+public class Alert {
   
 	/*void savetoPTable() throws SQLException {
 		String date = datePT.getValue().toString();
