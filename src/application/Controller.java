@@ -15,10 +15,8 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 
 public class Controller {
 	
@@ -26,22 +24,6 @@ public class Controller {
   
 	@FXML
 	TabPane tabs;
-	@FXML
-	Tab Physical; 
-	@FXML
-	Pane physicalTable;
-	@FXML
-	Tab Social; 
-	@FXML
-	Pane socialTable;
-	@FXML
-	Tab Mental; 
-	@FXML
-	Pane mentalTable;
-	@FXML
-	Tab Evaluation;
-	@FXML
-	Pane evaluationTable;
 	
 	@FXML
 	DatePicker datePT;
