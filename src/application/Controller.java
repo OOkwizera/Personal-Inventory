@@ -113,7 +113,7 @@ public class Controller {
 	
 	@FXML 
 	void savetoPTable() throws SQLException {
-		if (hasInfo("Physical")) {
+		try {
 			String date = datePT.getValue().toString();
 			int numMeals = Integer.parseInt(meals.getText());
 			int exercTime = Integer.parseInt(exercise.getText());
@@ -123,7 +123,7 @@ public class Controller {
 			setDates();
 			getNextTab();
 			clearTexts(meals, exercise, sleep);
-		} else {
+		} catch (Exception e) {
 			missingInfo();
 		}
 		
@@ -131,7 +131,7 @@ public class Controller {
 	
 	@FXML 
 	void savetoSTable() throws SQLException {
-		if (hasInfo("Social")) {
+		try {
 			String date = dateST.getValue().toString();
 			int chatTime = Integer.parseInt(chat.getText());
 			int socialMediaTime = Integer.parseInt(socialMedia.getText());
@@ -140,7 +140,7 @@ public class Controller {
 			data.updateTable("INSERT INTO Social VALUES" + cmd);
 			clearTexts(chat, socialMedia, fun);
 			getNextTab();
-		} else {
+		} catch (Exception e) {
 			missingInfo();
 		}
 		
@@ -148,7 +148,7 @@ public class Controller {
 	
 	@FXML
 	void savetoMTable() throws SQLException{
-		if (hasInfo("Mental")) {
+		try {
 			String date = dateMT.getValue().toString();
 			int numTasks = Integer.parseInt(tasks.getText());
 			int personalTime = Integer.parseInt(personalProjects.getText());
@@ -157,7 +157,7 @@ public class Controller {
 			data.updateTable("INSERT INTO Mental VALUES" + cmd);
 			getNextTab();
 			clearTexts(tasks, personalProjects, helpTime);
-		} else {
+		} catch(Exception e) {
 			missingInfo();
 		}
 		
@@ -166,7 +166,7 @@ public class Controller {
 	
 	@FXML 
 	void savetoEvalTable() throws SQLException{
-		if (hasInfo("Evaluation")) {
+		try {
 			String date = dateET.getValue().toString();
 			int pScore = productivityRate.getValue();
 			int hScore = happinessRate.getValue();
@@ -175,7 +175,7 @@ public class Controller {
 			data.updateTable("INSERT INTO Evaluation VALUES" + cmd);
 			clearChoiceBoxes(productivityRate, happinessRate, stressRate);
 			getNextTab();
-		} else {
+		} catch(Exception e) {
 			missingInfo();
 		}
 				
@@ -213,7 +213,7 @@ public class Controller {
 	
 	void missingInfo() {
 		Alert a  =  new Alert(AlertType.ERROR);
-		a.setContentText("Please, Enter all Required Information");
+		a.setContentText("Please, Enter all Required Information in the right formats");
 		a.showAndWait();
 		
 	}
@@ -273,20 +273,5 @@ public class Controller {
 			
 	}
 	
-	boolean hasInfo(String tab) {
-		if (tab.equals("Physical")) {
-			return (!meals.getText().isEmpty() && !exercise.getText().isEmpty() && !sleep.getText().isEmpty());
-		} else if (tab.equals("Social")) {
-			return (!chat.getText().isEmpty() && !socialMedia.getText().isEmpty() && !fun.getText().isEmpty());
-		} else  if (tab.equals("Mental")){
-			return (!tasks.getText().isEmpty() && !personalProjects.getText().isEmpty() && !helpTime.getText().isEmpty());
-		} else if (tab.equals("Evaluation")) {
-			return (productivityRate.getSelectionModel() != null && happinessRate.getSelectionModel() != null 
-					&& stressRate.getSelectionModel() != null);
-		} else {
-			return true;
-		}
-		
-	}
 	
 }	
