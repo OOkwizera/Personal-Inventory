@@ -12,11 +12,13 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class Controller {
 	
@@ -111,50 +113,72 @@ public class Controller {
 	
 	@FXML 
 	void savetoPTable() throws SQLException {
-		String date = datePT.getValue().toString();
-		int numMeals = Integer.parseInt(meals.getText());
-		int exercTime = Integer.parseInt(exercise.getText());
-		int sleepTime = Integer.parseInt(sleep.getText());
-		String cmd = getCommand(date, numMeals, exercTime, sleepTime);
-		data.updateTable("INSERT INTO Physical VALUES" + cmd);
-		setDates();
-		getNextTab();
-		clearTexts(meals, exercise, sleep);
+		if (hasInfo("Physical")) {
+			String date = datePT.getValue().toString();
+			int numMeals = Integer.parseInt(meals.getText());
+			int exercTime = Integer.parseInt(exercise.getText());
+			int sleepTime = Integer.parseInt(sleep.getText());
+			String cmd = getCommand(date, numMeals, exercTime, sleepTime);
+			data.updateTable("INSERT INTO Physical VALUES" + cmd);
+			setDates();
+			getNextTab();
+			clearTexts(meals, exercise, sleep);
+		} else {
+			missingInfo();
+		}
+		
 	}
 	
 	@FXML 
 	void savetoSTable() throws SQLException {
-		String date = datePT.getValue().toString();
-		int chatTime = Integer.parseInt(chat.getText());
-		int socialMediaTime = Integer.parseInt(socialMedia.getText());
-		int funTime = Integer.parseInt(fun.getText());
-		String cmd = getCommand(date, chatTime, socialMediaTime, funTime);
-		data.updateTable("INSERT INTO Social VALUES" + cmd);
-		clearTexts(chat, socialMedia, fun);
-		getNextTab();
+		if (hasInfo("Social")) {
+			String date = dateST.getValue().toString();
+			int chatTime = Integer.parseInt(chat.getText());
+			int socialMediaTime = Integer.parseInt(socialMedia.getText());
+			int funTime = Integer.parseInt(fun.getText());
+			String cmd = getCommand(date, chatTime, socialMediaTime, funTime);
+			data.updateTable("INSERT INTO Social VALUES" + cmd);
+			clearTexts(chat, socialMedia, fun);
+			getNextTab();
+		} else {
+			missingInfo();
+		}
+		
 	}
 	
 	@FXML
 	void savetoMTable() throws SQLException{
-		String date = datePT.getValue().toString();
-		int numTasks = Integer.parseInt(tasks.getText());
-		int personalTime = Integer.parseInt(personalProjects.getText());
-		int help = Integer.parseInt(helpTime.getText());
-		String cmd = getCommand(date, numTasks, personalTime, help);
-		data.updateTable("INSERT INTO Mental VALUES" + cmd);
-		getNextTab();
-		clearTexts(tasks, personalProjects, helpTime);
+		if (hasInfo("Mental")) {
+			String date = dateMT.getValue().toString();
+			int numTasks = Integer.parseInt(tasks.getText());
+			int personalTime = Integer.parseInt(personalProjects.getText());
+			int help = Integer.parseInt(helpTime.getText());
+			String cmd = getCommand(date, numTasks, personalTime, help);
+			data.updateTable("INSERT INTO Mental VALUES" + cmd);
+			getNextTab();
+			clearTexts(tasks, personalProjects, helpTime);
+		} else {
+			missingInfo();
+		}
+		
 		
 	}
 	
 	@FXML 
 	void savetoEvalTable() throws SQLException{
-		String date = datePT.getValue().toString();
-		int pScore = productivityRate.getValue();
-		int hScore = happinessRate.getValue();
-		int sScore = stressRate.getValue();
-		String cmd = getCommand(date, pScore, hScore, sScore);
-		data.updateTable("INSERT INTO Evaluation VALUES" + cmd);
+		if (hasInfo("Evaluation")) {
+			String date = dateET.getValue().toString();
+			int pScore = productivityRate.getValue();
+			int hScore = happinessRate.getValue();
+			int sScore = stressRate.getValue();
+			String cmd = getCommand(date, pScore, hScore, sScore);
+			data.updateTable("INSERT INTO Evaluation VALUES" + cmd);
+			clearChoiceBoxes(productivityRate, happinessRate, stressRate);
+			getNextTab();
+		} else {
+			missingInfo();
+		}
+				
 		
 	}
 	
@@ -178,6 +202,20 @@ public class Controller {
 		t1.clear();
 		t2.clear();
 		t3.clear();
+	}
+	
+	void clearChoiceBoxes(ChoiceBox<Integer> b1, ChoiceBox<Integer> b2, ChoiceBox<Integer> b3) {
+		b1.getSelectionModel().clearSelection();
+		b2.getSelectionModel().clearSelection();
+		b3.getSelectionModel().clearSelection();
+	}
+	
+	
+	void missingInfo() {
+		Alert a  =  new Alert(AlertType.ERROR);
+		a.setContentText("Please, Enter all Required Information");
+		a.showAndWait();
+		
 	}
 	
 	@FXML
@@ -232,7 +270,22 @@ public class Controller {
 		graph.getYAxis().setLabel(yAxis.getValue());
 		graph.getData().add(getSeries());
 		graph.setCreateSymbols(false);
-		
+			
+	}
+	
+	boolean hasInfo(String tab) {
+		if (tab.equals("Physical")) {
+			return (!meals.getText().isEmpty() && !exercise.getText().isEmpty() && !sleep.getText().isEmpty());
+		} else if (tab.equals("Social")) {
+			return (!chat.getText().isEmpty() && !socialMedia.getText().isEmpty() && !fun.getText().isEmpty());
+		} else  if (tab.equals("Mental")){
+			return (!tasks.getText().isEmpty() && !personalProjects.getText().isEmpty() && !helpTime.getText().isEmpty());
+		} else if (tab.equals("Evaluation")) {
+			return (productivityRate.getSelectionModel() != null && happinessRate.getSelectionModel() != null 
+					&& stressRate.getSelectionModel() != null);
+		} else {
+			return true;
+		}
 		
 	}
 	
