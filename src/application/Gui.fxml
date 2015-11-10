@@ -58,7 +58,7 @@
                         <Text layoutX="14.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" wrappingWidth="52.65142059326172" />
                         <DatePicker fx:id="dateMT" layoutX="103.0" layoutY="87.0" prefHeight="26.0" prefWidth="197.0" />
                         <Text layoutX="14.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Tasks :" wrappingWidth="66.68292617797852" />
-                        <TextField fx:id="tasks" layoutX="101.0" layoutY="161.0" prefHeight="26.0" prefWidth="200.0" promptText="Number of completed tasks " />
+                        <TextField fx:id="tasks" layoutX="101.0" layoutY="161.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent on required tasks." />
                         <Text layoutX="14.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Projects :" wrappingWidth="66.68292617797852" />
                         <TextField fx:id="personalProjects" layoutX="100.0" layoutY="241.0" prefHeight="26.0" prefWidth="200.0" promptText="Time spent on personal stuff" />
                         <Text layoutX="14.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help :" wrappingWidth="66.68292617797852" />
@@ -67,6 +67,7 @@
                         <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start recording data related to the following categories :" />
                         <Label layoutX="321.0" layoutY="245.0" text="min." />
                         <Label layoutX="321.0" layoutY="318.0" text="min." />
+                        <Label layoutX="321.0" layoutY="165.0" text="min." />
                      </children>
                   </Pane>
                </content>

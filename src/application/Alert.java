@@ -2,17 +2,6 @@ package application;
 
 public class Alert {
   
-	/*void savetoPTable() throws SQLException {
-		String date = datePT.getValue().toString();
-		int numMeals = getPTinfo(meals.getText());
-		int exercTime = getPTinfo(exercise.getText());
-		int sleepTime = getPTinfo(sleep.getText());
-		String cmd = getCommand(date, numMeals, exercTime, sleepTime);
-		data.updateTable("INSERT INTO Physical VALUES" + cmd);
-		setDates();
-		getNextTab();
-		clearTexts(meals, exercise, sleep);
-	}*/
 
 	/*
 	 * public void getPTinfo(String info){
