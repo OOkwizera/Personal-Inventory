@@ -79,8 +79,8 @@ public class Controller {
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
 	
 	final ArrayList<String> Xaxis = new ArrayList<String>(Arrays.asList("Meals", "Exercise", 
-			"Sleep", "Chat", "SocialMedia", "Fun", "tasksCompleted", 
-			"personalProjects", "helpTime"));
+			"Sleep", "Chat", "Social Media", "Fun", "Tasks Completed", 
+			"Personal Projects", "Help Time"));
 	final ArrayList<String> Yaxis = new ArrayList<String>(Arrays.asList("Productivity", 
 			"Happiness", "Stress"));
 	ObservableList<String> xcategories = FXCollections.observableArrayList();
@@ -231,6 +231,7 @@ public class Controller {
 		graph.getXAxis().setLabel(xAxis.getValue());
 		graph.getYAxis().setLabel(yAxis.getValue());
 		graph.getData().add(getSeries());
+		graph.setCreateSymbols(false);
 		
 		
 	}
