@@ -208,7 +208,6 @@ public class Controller {
 		if (validAxes()) {
 			String columnX = xAxis.getValue();
 			String columnY = yAxis.getValue();
-			//series.setName(columnX + " vs " + columnY);
 			ArrayList<Integer> xData = new ArrayList<Integer>();
 			ArrayList<Integer> yData = new ArrayList<Integer>();
 			if (isValidRange()) {
@@ -235,9 +234,9 @@ public class Controller {
 		graph.getYAxis().setLabel(yAxis.getValue());
 		graph.getData().add(getSeries());
 		graph.setCreateSymbols(false);
+		graph.setLegendVisible(false);
 		if (validAxes()) {
 			graph.setTitle(xAxis.getValue() + " vs " + yAxis.getValue());
-			graph.setLegendVisible(false);
 		}
 			
 	}
