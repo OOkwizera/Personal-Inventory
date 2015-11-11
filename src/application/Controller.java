@@ -80,10 +80,10 @@ public class Controller {
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
 	ObservableList<Integer> ratings = FXCollections.observableArrayList();
 	
-	final ArrayList<String> Xaxis = new ArrayList<String>(Arrays.asList("Meals", "Exercise", 
+	final ArrayList<String> xAxisOptions = new ArrayList<String>(Arrays.asList("Meals", "Exercise", 
 			"Sleep", "Chat", "Social Media", "Fun", "Tasks Completed", 
 			"Personal Projects", "Help Time"));
-	final ArrayList<String> Yaxis = new ArrayList<String>(Arrays.asList("Productivity", 
+	final ArrayList<String> yAxisOptions = new ArrayList<String>(Arrays.asList("Productivity", 
 			"Happiness", "Stress"));
 	ObservableList<String> xcategories = FXCollections.observableArrayList();
 	ObservableList<String> ycategories = FXCollections.observableArrayList();
@@ -95,10 +95,10 @@ public class Controller {
 		happinessRate.setItems(ratings);
 		stressRate.setItems(ratings);
 		
-		xcategories.addAll(Xaxis);
+		xcategories.addAll(xAxisOptions);
 		xAxis.setItems(xcategories);
 		
-		ycategories.addAll(Yaxis);
+		ycategories.addAll(yAxisOptions);
 		yAxis.setItems(ycategories);
 		
 		try {
@@ -182,11 +182,6 @@ public class Controller {
 		
 	}
 	
-	public String getCommand(String column1, int column2, int column3, int column4) {
-		String cmd = " ( " + column1 + ", " + column2 + ", " + column3 + ", " + column4 + " )";
-		return cmd;
-	}
-	
 	@FXML
 	public void setDates() {
 		LocalDate d =datePT.getValue();
@@ -197,6 +192,43 @@ public class Controller {
 		}
 	}
 	
+	@FXML
+	void getNextTab() {
+		tabs.getSelectionModel().selectNext();
+	}
+	
+	@FXML
+	public XYChart.Series<Number, Number> getSeries() {
+		XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
+		int maxDataRange = 30;
+		if (validAxes()) {
+			String columnX = xAxis.getValue();
+			String columnY = yAxis.getValue();
+			series.setName(columnX + " vs " + columnY);
+			ArrayList<Integer> xData = data.getData(getTableName(columnX), getColumnName(columnX));
+			ArrayList<Integer> yData = data.getData(getTableName(columnY), getColumnName(columnY));
+			for (int i = 0; i<  Math.min(maxDataRange, Math.min(xData.size(), yData.size())); i++) {
+				series.getData().add(new Data<Number, Number> (xData.get(i), yData.get(i)));		
+			}	
+			
+		} return series;
+		
+	}
+
+	@FXML
+	void analyze() {
+		graph.getData().clear();
+		graph.getXAxis().setLabel(xAxis.getValue());
+		graph.getYAxis().setLabel(yAxis.getValue());
+		graph.getData().add(getSeries());
+		graph.setCreateSymbols(false);
+			
+	}
+	
+	public String getCommand(String column1, int column2, int column3, int column4) {
+		String cmd = " ( " + column1 + ", " + column2 + ", " + column3 + ", " + column4 + " )";
+		return cmd;
+	}
 	
 	void clearTexts(TextField t1, TextField t2, TextField t3) {
 		t1.clear();
@@ -210,34 +242,10 @@ public class Controller {
 		b3.getSelectionModel().clearSelection();
 	}
 	
-	
 	void missingInfo() {
 		Alert a  =  new Alert(AlertType.ERROR);
-		a.setContentText("Please, Enter all Required Information in the right formats");
+		a.setContentText("Please, enter all the required information correctly!");
 		a.showAndWait();
-		
-	}
-	
-	@FXML
-	void getNextTab() {
-		tabs.getSelectionModel().selectNext();
-	}
-	
-	@FXML
-	public XYChart.Series<Number, Number> getSeries() {
-		XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
-		if (validAxes()) {
-			String columnX = xAxis.getValue();
-			String columnY = yAxis.getValue();
-			series.setName(columnX + " vs " + columnY);
-			ArrayList<Integer> xData = data.getData(getTable(columnX), columnX);
-			ArrayList<Integer> yData = data.getData(getTable(columnY), columnY);
-			for (int i = 0; i< Math.min(10, Math.min(xData.size(), yData.size())); i++) {
-				series.getData().add(new Data<Number, Number> (xData.get(i), yData.get(i)));
-					
-			}	
-			
-		} return series;
 		
 	}
 	
@@ -245,33 +253,33 @@ public class Controller {
 		return (xAxis.getValue() != null && yAxis.getValue() != null);
 	}
 	
-	public String getTable(String column) {
-		String tableName = "";
+	public String getTableName(String column) {
 		if (column.equals("Meals") || column.equals("Exercise") || column.equals("Sleep")) {
-			tableName += "Physical";
-			return tableName;
-		} else if ((column.equals("Chat") || column.equals("SocialMedia") || column.equals("Fun"))) {
-			tableName += "Social";
-			return tableName;
-		} else if ((column.equals("tasksCompleted") || column.equals("personalProjects") || column.equals("helpTime"))) {
-			tableName += "Mental";
-			return tableName;
+			return "Physical";
+	
+		} else if ((column.equals("Chat") || column.equals("Social Media") || column.equals("Fun"))) {
+			return "Social";
+		} else if ((column.equals("Tasks Completed") || column.equals("Personal Projects") || column.equals("Help Time"))) {
+			return "Mental";
 		} else {
-			tableName += "Evaluation";
-			return tableName;
+			return "Evaluation";
 		}
 		
 	} 
 	
-	@FXML
-	void analyze() {
-		graph.getData().clear();
-		graph.getXAxis().setLabel(xAxis.getValue());
-		graph.getYAxis().setLabel(yAxis.getValue());
-		graph.getData().add(getSeries());
-		graph.setCreateSymbols(false);
-			
+	public String getColumnName(String column) {
+		if (column.equals("Social Media")) {
+			return "SocialMedia";
+		} else if (column.equals("Tasks Completed")) {
+			return "tasksCompleted";
+		} else if (column.equals("Help Time")) {
+			return "helpTime";
+		} else if (column.equals("Personal Projects")) {
+			return "personalProjects";
+		}
+		return column;
 	}
+	
 	
 	
 }	
