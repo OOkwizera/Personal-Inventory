@@ -9,7 +9,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <center>
-      <TabPane fx:id="tabs" prefHeight="440.0" prefWidth="395.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabs" prefHeight="465.0" prefWidth="454.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab fx:id="Physical" text="Physical ">
                <content>
@@ -94,9 +94,9 @@
             </Tab>
             <Tab text="Analyze Data">
                <content>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="407.0" prefWidth="411.0">
                      <children>
-                        <LineChart fx:id="graph" layoutX="10.0" layoutY="55.0" prefHeight="337.0" prefWidth="369.0">
+                        <LineChart fx:id="graph" layoutX="14.0" layoutY="81.0" prefHeight="337.0" prefWidth="369.0">
                           <xAxis>
                             <NumberAxis side="BOTTOM" />
                           </xAxis>
@@ -104,11 +104,15 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </LineChart>
-                        <ChoiceBox layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" fx:id="xAxis" />
-                        <ChoiceBox fx:id="yAxis" layoutX="165.0" layoutY="23.0" prefHeight="25.0" prefWidth="125.0" />
-                        <Label layoutX="59.0" layoutY="6.0" text="x-Axis:" />
-                        <Label layoutX="210.0" layoutY="6.0" text="y-Axis:" />
-                        <Button fx:id="analyze" layoutX="314.0" layoutY="23.0" mnemonicParsing="false" onAction="#analyze" text="Graph" />
+                        <ChoiceBox layoutX="59.0" layoutY="18.0" prefHeight="25.0" prefWidth="125.0" fx:id="xAxis" />
+                        <ChoiceBox fx:id="yAxis" layoutX="250.0" layoutY="18.0" prefHeight="25.0" prefWidth="125.0" />
+                        <Label layoutX="14.0" layoutY="23.0" text="x-Axis:" />
+                        <Label layoutX="199.0" layoutY="23.0" text="y-Axis:" />
+                        <Button fx:id="analyze" layoutX="383.0" layoutY="43.0" mnemonicParsing="false" onAction="#analyze" text="Graph" />
+                        <Label layoutX="14.0" layoutY="61.0" text="From:" />
+                        <DatePicker fx:id="From" layoutX="59.0" layoutY="56.0" prefHeight="27.0" prefWidth="125.0" promptText="Optional" />
+                        <DatePicker fx:id="To" layoutX="251.0" layoutY="56.0" prefHeight="27.0" prefWidth="127.0" promptText="Optional" />
+                        <Label layoutX="199.0" layoutY="61.0" text="To:" />
                      </children>
                   </Pane>
                </content>

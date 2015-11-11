@@ -75,6 +75,10 @@ public class Controller {
 	LineChart<Number, Number> graph;
 	@FXML
 	Button analyze;
+	@FXML
+	DatePicker From;
+	@FXML
+	DatePicker To;
 	
 	
 	final ArrayList<Integer> ints = new ArrayList<Integer>(Arrays.asList(0, 1,2,3,4,5,6,7,8,9,10));
@@ -204,9 +208,18 @@ public class Controller {
 		if (validAxes()) {
 			String columnX = xAxis.getValue();
 			String columnY = yAxis.getValue();
-			series.setName(columnX + " vs " + columnY);
-			ArrayList<Integer> xData = data.getData(getTableName(columnX), getColumnName(columnX));
-			ArrayList<Integer> yData = data.getData(getTableName(columnY), getColumnName(columnY));
+			//series.setName(columnX + " vs " + columnY);
+			ArrayList<Integer> xData = new ArrayList<Integer>();
+			ArrayList<Integer> yData = new ArrayList<Integer>();
+			if (isValidRange()) {
+				String start = From.getValue().toString();
+				String end = To.getValue().toString();
+				xData.addAll(data.getDataBetween(getTableName(columnX), getColumnName(columnX), start, end));
+				yData.addAll(data.getDataBetween(getTableName(columnY), getColumnName(columnY), start, end));
+			} else {
+				 xData.addAll(data.getData(getTableName(columnX), getColumnName(columnX)));
+				 yData.addAll(data.getData(getTableName(columnY), getColumnName(columnY)));
+			}
 			for (int i = 0; i<  Math.min(maxDataRange, Math.min(xData.size(), yData.size())); i++) {
 				series.getData().add(new Data<Number, Number> (xData.get(i), yData.get(i)));		
 			}	
@@ -222,6 +235,10 @@ public class Controller {
 		graph.getYAxis().setLabel(yAxis.getValue());
 		graph.getData().add(getSeries());
 		graph.setCreateSymbols(false);
+		if (validAxes()) {
+			graph.setTitle(xAxis.getValue() + " vs " + yAxis.getValue());
+			graph.setLegendVisible(false);
+		}
 			
 	}
 	
@@ -280,6 +297,9 @@ public class Controller {
 		return column;
 	}
 	
+	public boolean isValidRange() {
+		return From.getValue() != null && To.getValue() != null;
+	}
 	
 	
 }	

@@ -69,7 +69,23 @@ public class Database {
 		   ResultSet result = statement.executeQuery(cmd);
 		   while (result.next()) {
 			   dataList.add(result.getInt(column));
+		   }
 	   }
+	   catch (Exception e) {
+		   System.err.println(e.getClass().getName() + ": " + e.getMessage());
+		   System.exit(0);
+	   }
+	   return dataList;
+   }
+   
+   public ArrayList<Integer> getDataBetween(String tableName, String column, String date1, String date2) {
+	   ArrayList<Integer> dataList = new ArrayList<Integer>();
+	   try {
+		   String cmd = "SELECT " + column + " FROM " + tableName + " WHERE Date BETWEEN " +  date2 + " AND " + date1;
+		   ResultSet result = statement.executeQuery(cmd);
+		   while (result.next()) {
+			   dataList.add(result.getInt(column));
+		   }
 	   }
 	   catch (Exception e) {
 		   System.err.println(e.getClass().getName() + ": " + e.getMessage());
