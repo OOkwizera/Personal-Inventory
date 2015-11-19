@@ -23,6 +23,7 @@ public class Database {
 	        this.statement.execute(command3);
 	        String command4 = "CREATE TABLE IF NOT EXISTS Evaluation (Date TEXT, Productivity INTEGER, Happiness INTEGER, Stress INTEGER)";
 	        this.statement.execute(command4);
+	        
     	} catch (SQLException e) {
     		System.err.println(e.getMessage());
     	} 
@@ -32,35 +33,9 @@ public class Database {
    
    public void updateTable(String command) throws SQLException {
 	   statement.executeUpdate(command);
+	   
    }
    
-   public void emptyTable() throws SQLException {
-	   try {
-		   statement.execute("DELETE FROM Physical");
-		   statement.execute("DELETE FROM Social");
-		   statement.execute("DELETE FROM Mental");
-		   statement.execute("DELETE FROM Evaluation");
-		   
-	   } catch (Exception e) {
-		   System.err.println(e.getClass().getName() + ": " + e.getMessage());
-		   System.exit(0);
-	   }
-   }
-   
-   public ArrayList<String> getDates() {
-	   ArrayList<String> dates = new ArrayList<String>();
-	   try {
-	   ResultSet result = statement.executeQuery("SELECT Date FROM Physical");
-	   while (result.next()) {
-		   dates.add(result.getString(0));
-	   }
-	   }
-	   catch (Exception e) {
-		   System.err.println(e.getClass().getName() + ": " + e.getMessage());
-		   System.exit(0);
-	   }
-	   return dates;
-   }
    
    public ArrayList<Integer> getData(String tableName, String column) {
 	   ArrayList<Integer> dataList = new ArrayList<Integer>();
@@ -70,6 +45,7 @@ public class Database {
 		   while (result.next()) {
 			   dataList.add(result.getInt(column));
 		   }
+		  
 	   }
 	   catch (Exception e) {
 		   System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -86,6 +62,7 @@ public class Database {
 		   while (result.next()) {
 			   dataList.add(result.getInt(column));
 		   }
+		  
 	   }
 	   catch (Exception e) {
 		   System.err.println(e.getClass().getName() + ": " + e.getMessage());

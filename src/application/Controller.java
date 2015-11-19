@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import application.database.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -91,6 +90,7 @@ public class Controller {
 			"Happiness", "Stress"));
 	ObservableList<String> xcategories = FXCollections.observableArrayList();
 	ObservableList<String> ycategories = FXCollections.observableArrayList();
+	
 	
 	@FXML
 	void initialize()  {
